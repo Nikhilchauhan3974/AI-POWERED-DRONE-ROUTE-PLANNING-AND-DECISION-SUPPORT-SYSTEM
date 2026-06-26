@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cyber-bg text-slate-100 font-sans antialiased overflow-x-hidden;
+    background-image: 
+      radial-gradient(at 50% 0%, rgba(30, 41, 59, 0.3) 0, transparent 75%),
+      linear-gradient(rgba(15, 23, 42, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.1) 1px, transparent 1px);
+    background-size: 100% 100%, 30px 30px, 30px 30px;
+  }
+  
+  h1, h2, h3, h4, .hud-font {
+    font-family: 'Orbitron', 'Inter', sans-serif;
+    letter-spacing: 0.05em;
+  }
+
+  .mono-font {
+    font-family: 'Share Tech Mono', 'Consolas', monospace;
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #06b6d4;
+}
+
+/* Futuristic Scanner & Radar Keyframes */
+@keyframes scanning {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.animate-scan {
+  position: relative;
+  overflow: hidden;
+}
+.animate-scan::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(to right, transparent, #06b6d4, transparent);
+  box-shadow: 0 0 10px #06b6d4;
+  animation: scanning 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes radar-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-radar {
+  animation: radar-sweep 12s linear infinite;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 0.05em 0 0 #ef4444, -0.05em -0.025em 0 #06b6d4; }
+  15% { text-shadow: 0.05em 0 0 #ef4444, -0.05em -0.025em 0 #06b6d4; }
+  16% { text-shadow: -0.05em -0.025em 0 #ef4444, 0.025em 0.05em 0 #10b981; }
+  49% { text-shadow: -0.05em -0.025em 0 #ef4444, 0.025em 0.05em 0 #10b981; }
+  50% { text-shadow: 0.025em 0.05em 0 #ef4444, -0.05em 0 0 #06b6d4; }
+  99% { text-shadow: 0.025em 0.05em 0 #ef4444, -0.05em 0 0 #06b6d4; }
+  100% { text-shadow: -0.025em 0 0 #ef4444, -0.025em -0.025em 0 #10b981; }
+}
+
+.glitch-text {
+  animation: glitch 2.5s infinite;
+}
+
+/* Glassmorphism panel base */
+.glass-panel {
+  @apply bg-slate-950/70 border border-slate-800/80 backdrop-blur-md shadow-glass rounded-lg;
+}
+
+/* Custom styles for dark theme Leaflet map */
+.leaflet-container {
+  background: #020617 !important;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Leaflet Dark Filter Overlay */
+.dark-map .leaflet-tile-container {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+.leaflet-bar {
+  border: 1px solid #1e293b !important;
+  box-shadow: none !important;
+}
+.leaflet-bar a {
+  background-color: rgba(15, 23, 42, 0.9) !important;
+  color: #06b6d4 !important;
+  border-bottom: 1px solid #1e293b !important;
+}
+.leaflet-bar a:hover {
+  background-color: #1e293b !important;
+  color: #fff !important;
+}
+.leaflet-popup-content-wrapper {
+  background: rgba(15, 23, 42, 0.95) !important;
+  color: #f8fafc !important;
+  border: 1px solid #06b6d4 !important;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.3) !important;
+  backdrop-filter: blur(8px) !important;
+}
+.leaflet-popup-tip {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border: 1px solid #06b6d4 !important;
+}
